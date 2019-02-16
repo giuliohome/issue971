@@ -1,0 +1,10 @@
+﻿CREATE DATABASE Issue971;
+GO
+USE Issue971;
+GO
+CREATE TABLE dbo.Pesron(
+ID INT,
+Name VARCHAR(50)
+);
+GO
+ 
