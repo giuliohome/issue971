@@ -10,14 +10,14 @@ namespace CmdIssue971
     {
         static void Main(string[] args)
         {
-            Test();
+            Test().Wait();
             Console.ReadKey();
         }
 
-        static void Test()
+        async static Task Test()
         {
             var notWrong = new NotWrong();
-            var persons = notWrong.GetPersons1("MyDB");
+            var persons = await notWrong.GetPersons4("MyDB");
             var check = persons.ToList();
             check.ForEach(p => Console.WriteLine("{0} {1}", p.ID, p.Name));
         }

@@ -57,5 +57,28 @@ namespace CmdIssue971
                 conn.Close();
             }
         }
+        public async Task<IEnumerable<Person>> GetPersons4(string myDB)
+        {
+            using (var conn = new SqlConnection(ConfigurationManager.ConnectionStrings[myDB].ConnectionString))
+            {
+                var ret = Enumerable.Empty<Person>();
+                await conn.OpenAsync();
+                using (SqlCommand cmd = new SqlCommand("select * from Person", conn))
+                {
+                    var DR = await cmd.ExecuteReaderAsync();
+                    while (await DR.ReadAsync())
+                    {
+                        ret = ret.Append( new Person()
+                        {
+                            ID = (int)DR["ID"],
+                            Name = (string)DR["Name"]
+                        });
+                    }
+                    DR.Close();
+                }
+                conn.Close();
+                return ret;
+            }
+        }
     }
 }
