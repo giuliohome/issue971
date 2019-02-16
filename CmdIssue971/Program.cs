@@ -20,6 +20,18 @@ namespace CmdIssue971
             var persons = await notWrong.GetPersons4("MyDB");
             var check = persons.ToList();
             check.ForEach(p => Console.WriteLine("{0} {1}", p.ID, p.Name));
+            persons = notWrong.GetPersons3("MyDB");
+            check = persons.ToList();
+            check.ForEach(p => Console.WriteLine("{0} {1}", p.ID, p.Name));
+            persons = notWrong.GetPersons2("MyDB");
+            check = persons.ToList();
+            check.ForEach(p => Console.WriteLine("{0} {1}", p.ID, p.Name));
+            persons = notWrong.GetPersons1("MyDB");
+            check = persons.ToList();
+            check.ForEach(p => Console.WriteLine("{0} {1}", p.ID, p.Name));
+            //persons = notWrong.GetPersons0("MyDB");
+            //check = persons.ToList(); //crash! throw new ObjectDisposedException
+            //check.ForEach(p => Console.WriteLine("{0} {1}", p.ID, p.Name));
         }
     }
 }
